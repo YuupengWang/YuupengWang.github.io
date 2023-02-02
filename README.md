@@ -2,6 +2,7 @@
 更新日期：2023 年 2 月 2 日
 1. 在个人中心界面添加了【环境固化】和【环境升级】功能，现在可以自助安装 python 包或升级 TransMatrix 至新版本了。参考【三.3.1 个人信息】
 2. 在团队管理添加了模版配置功能，现在允许管理员上传或修改本团队成员所使用的模板了。参考【一.1.3.4 修改团队模板】
+3. 添加了通过 Pycharm 使用 TransQuant 的链接方式。参考【四.4.1 通过 Pycharm 使用 TransQuant 平台】
 
 # TransQuant 智能量化投研平台的研究模式
 TransQuant 智能量化投研平台以项目为单位帮助用户进行量化研究。一个项目可以理解为一个独立的工程目录，TransQuant 提供两种研究模式，signal(因子研究)和 simulation(回测研究)，研究模式通过 yaml 文件中的参数确定。每个项目下都可以存在多个 signal 和 simulation。项目、signal、simulation 在底层都是以文件夹方式存在，用户可以通过前端界面创建，也可以直接在个人文件目录创建(需手动配置 yaml)。TransQuant 建议用户将一个项目目录视为独立目录，项目内不要引用项目外的代码或文件。
@@ -221,7 +222,7 @@ exit 0
 ![](./interface_intro/pycharm7.png)
 6. 等待 Pycharm 连接完成，点击下一步。
 ![](./interface_intro/pycharm11.png)
-7. 在 Virtualenv Environment 中配置需同步的目录，此时请选择 `/root/workspace`，此地址为用户的项目目录，勾选 inherit global site-package， 点击下一步，点击创建。
+7. 在 System Interpreter 中配置需同步的目录，此时请选择 `/mypython.sh` 点击创建。
 ![](./interface_intro/pycharm8.png)
 ![](./interface_intro/pycharm9.png)
 8. 通常情况下 Pycharm 会进行同步文件行为，让 Pycharm 自行完成即可。
@@ -232,29 +233,6 @@ exit 0
 10. 打开Tools-Deployment-Browse Remote Host，等待索引创建完毕。然后打开`/root/workspace`，选择需要同步的目录，邮件点击，然后点击 Download from here。待下载完成后，左侧目录就会出现下载好的目录文件。
 ![](./interface_intro/pycharm14.png)
 ![](./interface_intro/pycharm15.png)
-11. 最后，需要在 Pycharm 中配置一下环境变量。打开Tools-Deployment-Browse Remote Host，双击打开`/etc/profile`，在下方找到环境变量。**复制并去除每行前面的`export`字符**
-![](./interface_intro/pycharm19.png)
-* 以下是需复制的环境变量示例
-```
- LANG=C.UTF-8
- token=a3a98447-c42f-4803-bf96-02ae6560499b
- nginxIP=192.168.173.15:8089
- username=user2
- timelyre_ip=192.168.173.18
- timelyre_port=10000
- restjdbc_ip=192.168.173.15
- restjdbc_port=9999
- db_name=user2_private
- meta_db_name=user2_meta
- port=8889
- ip=192.168.173.15
-```
-12. 打开 run 工具中的 Edit Configurations，在 Environment variables 中粘贴刚才复制的环境变量。
-![](./interface_intro/pycharm20.png)
-![](./interface_intro/pycharm21.png)
-* 点击右侧的编辑按钮
-![](./interface_intro/pycharm22.png)
-* 在新的弹窗中点击粘贴按钮，确认环境变量都已配置好
-![](./interface_intro/pycharm23.png)
-![](./interface_intro/pycharm24.png)
-* 点击 OK 返回上一层，再次点击 OK 回到主界面，此时 Pycharm连接便配置完成了。
+11. 打开 pycharm设置，找到 Jupyter Servers，选择 Configured Server，将个人信息中对应环境地址的Jupyter Server 地址粘贴Configured Server 中，点击确认
+![](./interface_intro/pycharm16.png)
+* 此时 Pycharm连接便配置完成了。
